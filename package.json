@@ -85,7 +85,7 @@
   },
   "scripts": {
     "setup": "git config blame.ignoreRevsFile .git-blame-ignore-revs",
-    "build": "cross-env NODE_ENV=development pnpm run _build",
+    "build": "node api.js && cross-env NODE_ENV=development pnpm run _build",
     "build:prod": "cross-env NODE_ENV=production pnpm run _build",
     "build:lib": "rollup -c",
     "build:lib:axios": "cross-env USE_AXIOS=true rollup -c",
