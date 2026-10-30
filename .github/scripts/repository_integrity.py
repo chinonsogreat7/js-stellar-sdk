@@ -48,9 +48,13 @@ def main():
                 failures.append(f'{relative}: missing or not a regular file')
             elif not isinstance(digest, str) or hashlib.sha256(target.read_bytes()).hexdigest() != digest:
                 failures.append(f'{relative}: bytes differ from reviewed baseline')
-        paths = subprocess.check_output(['git', 'ls-files', '-z'], cwd=ROOT).split(b'\0')
-        for raw in filter(None, paths):
-            relative = raw.decode('utf-8')
+        entries = subprocess.check_output(['git', 'ls-files', '--stage', '-z'], cwd=ROOT).split(b'\0')
+        for raw in filter(None, entries):
+            metadata, relative_bytes = raw.split(b'\t', 1)
+            relative = relative_bytes.decode('utf-8')
+            if metadata.split(b' ', 1)[0] == b'160000':
+                print(f'Pinned submodule not scanned: {relative}')
+                continue
             target = ROOT / relative
             if target.is_symlink():
                 continue
