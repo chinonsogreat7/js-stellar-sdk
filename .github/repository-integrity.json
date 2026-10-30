@@ -1,0 +1,6 @@
+{
+  ".github/workflows/repository-integrity.yml": "42afb9a2cffe065f25d47f8307ad4645246fd6ef9407947e8bda090e3d9f3614",
+  ".gitignore": "395e2aff3d2b70c8ef4784ccd9db233e44235e4ada79cb63eafecc6a0e5ce7a3",
+  "eslint.config.js": "856024c6129e3723fe144add56726d68c5f8a996c7186e61ec475c2194c62465",
+  "package.json": "0d470bd8349db038b92572fbf071d5648983dbd12c1bb10be2b4a6287302d513"
+}
